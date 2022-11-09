@@ -3,7 +3,6 @@ package com.wsrest.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
@@ -40,10 +39,6 @@ public class Department implements Serializable {
 
 	private Boolean status;
 
-	//bi-directional many-to-one association to DepartmentsEmployee
-	@OneToMany(mappedBy="department")
-	private List<DepartmentsEmployee> departmentsEmployees;
-
 	//bi-directional many-to-one association to Enterprise
 	@ManyToOne
 	@JoinColumn(name="id_enterprises")
@@ -52,16 +47,8 @@ public class Department implements Serializable {
 	public Department() {
 	}
 
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -69,7 +56,7 @@ public class Department implements Serializable {
 	}
 
 	public Timestamp getCreatedDate() {
-		return this.createdDate;
+		return createdDate;
 	}
 
 	public void setCreatedDate(Timestamp createdDate) {
@@ -77,7 +64,7 @@ public class Department implements Serializable {
 	}
 
 	public String getDescription() {
-		return this.description;
+		return description;
 	}
 
 	public void setDescription(String description) {
@@ -85,7 +72,7 @@ public class Department implements Serializable {
 	}
 
 	public String getModifiedBy() {
-		return this.modifiedBy;
+		return modifiedBy;
 	}
 
 	public void setModifiedBy(String modifiedBy) {
@@ -93,7 +80,7 @@ public class Department implements Serializable {
 	}
 
 	public Timestamp getModifiedDate() {
-		return this.modifiedDate;
+		return modifiedDate;
 	}
 
 	public void setModifiedDate(Timestamp modifiedDate) {
@@ -101,7 +88,7 @@ public class Department implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -109,7 +96,7 @@ public class Department implements Serializable {
 	}
 
 	public String getPhone() {
-		return this.phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
@@ -117,41 +104,21 @@ public class Department implements Serializable {
 	}
 
 	public Boolean getStatus() {
-		return this.status;
+		return status;
 	}
 
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 
-	public List<DepartmentsEmployee> getDepartmentsEmployees() {
-		return this.departmentsEmployees;
-	}
-
-	public void setDepartmentsEmployees(List<DepartmentsEmployee> departmentsEmployees) {
-		this.departmentsEmployees = departmentsEmployees;
-	}
-
-	public DepartmentsEmployee addDepartmentsEmployee(DepartmentsEmployee departmentsEmployee) {
-		getDepartmentsEmployees().add(departmentsEmployee);
-		departmentsEmployee.setDepartment(this);
-
-		return departmentsEmployee;
-	}
-
-	public DepartmentsEmployee removeDepartmentsEmployee(DepartmentsEmployee departmentsEmployee) {
-		getDepartmentsEmployees().remove(departmentsEmployee);
-		departmentsEmployee.setDepartment(null);
-
-		return departmentsEmployee;
-	}
-
 	public Enterprise getEnterprise() {
-		return this.enterprise;
+		return enterprise;
 	}
 
-	public void setEnterpris(Enterprise enterprise) {
+	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
 	}
+
+	
 
 }

@@ -3,7 +3,6 @@ package com.wsrest.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
@@ -44,23 +43,11 @@ public class Employee implements Serializable {
 
 	private String surname;
 
-	//bi-directional many-to-one association to DepartmentsEmployee
-	@OneToMany(mappedBy="employee")
-	private List<DepartmentsEmployee> departmentsEmployees;
-
 	public Employee() {
 	}
 
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public Integer getAge() {
-		return this.age;
+		return age;
 	}
 
 	public void setAge(Integer age) {
@@ -68,7 +55,7 @@ public class Employee implements Serializable {
 	}
 
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -76,7 +63,7 @@ public class Employee implements Serializable {
 	}
 
 	public Timestamp getCreatedDate() {
-		return this.createdDate;
+		return createdDate;
 	}
 
 	public void setCreatedDate(Timestamp createdDate) {
@@ -84,7 +71,7 @@ public class Employee implements Serializable {
 	}
 
 	public String getEmail() {
-		return this.email;
+		return email;
 	}
 
 	public void setEmail(String email) {
@@ -92,7 +79,7 @@ public class Employee implements Serializable {
 	}
 
 	public String getModifiedBy() {
-		return this.modifiedBy;
+		return modifiedBy;
 	}
 
 	public void setModifiedBy(String modifiedBy) {
@@ -100,7 +87,7 @@ public class Employee implements Serializable {
 	}
 
 	public Timestamp getModifiedDate() {
-		return this.modifiedDate;
+		return modifiedDate;
 	}
 
 	public void setModifiedDate(Timestamp modifiedDate) {
@@ -108,7 +95,7 @@ public class Employee implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -116,7 +103,7 @@ public class Employee implements Serializable {
 	}
 
 	public String getPosition() {
-		return this.position;
+		return position;
 	}
 
 	public void setPosition(String position) {
@@ -124,7 +111,7 @@ public class Employee implements Serializable {
 	}
 
 	public Boolean getStatus() {
-		return this.status;
+		return status;
 	}
 
 	public void setStatus(Boolean status) {
@@ -132,33 +119,12 @@ public class Employee implements Serializable {
 	}
 
 	public String getSurname() {
-		return this.surname;
+		return surname;
 	}
 
 	public void setSurname(String surname) {
 		this.surname = surname;
 	}
 
-	public List<DepartmentsEmployee> getDepartmentsEmployees() {
-		return this.departmentsEmployees;
-	}
-
-	public void setDepartmentsEmployees(List<DepartmentsEmployee> departmentsEmployees) {
-		this.departmentsEmployees = departmentsEmployees;
-	}
-
-	public DepartmentsEmployee addDepartmentsEmployee(DepartmentsEmployee departmentsEmployee) {
-		getDepartmentsEmployees().add(departmentsEmployee);
-		departmentsEmployee.setEmployee(this);
-
-		return departmentsEmployee;
-	}
-
-	public DepartmentsEmployee removeDepartmentsEmployee(DepartmentsEmployee departmentsEmployee) {
-		getDepartmentsEmployees().remove(departmentsEmployee);
-		departmentsEmployee.setEmployee(null);
-
-		return departmentsEmployee;
-	}
 
 }

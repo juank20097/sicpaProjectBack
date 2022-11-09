@@ -3,7 +3,6 @@ package com.wsrest.entities;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.List;
 
 
 /**
@@ -12,7 +11,7 @@ import java.util.List;
  */
 @Entity
 @Table(name="enterprises")
-@NamedQuery(name="Enterpris.findAll", query="SELECT e FROM Enterpris e")
+@NamedQuery(name="Enterpris.findAll", query="SELECT e FROM Enterprise e")
 public class Enterprise implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -40,23 +39,11 @@ public class Enterprise implements Serializable {
 
 	private Boolean status;
 
-	//bi-directional many-to-one association to Department
-	@OneToMany(mappedBy="enterpris")
-	private List<Department> departments;
-
 	public Enterprise() {
 	}
 
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getAddress() {
-		return this.address;
+		return address;
 	}
 
 	public void setAddress(String address) {
@@ -64,7 +51,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -72,7 +59,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public Timestamp getCreatedDate() {
-		return this.createdDate;
+		return createdDate;
 	}
 
 	public void setCreatedDate(Timestamp createdDate) {
@@ -80,7 +67,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public String getModifiedBy() {
-		return this.modifiedBy;
+		return modifiedBy;
 	}
 
 	public void setModifiedBy(String modifiedBy) {
@@ -88,7 +75,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public Timestamp getModifiedDate() {
-		return this.modifiedDate;
+		return modifiedDate;
 	}
 
 	public void setModifiedDate(Timestamp modifiedDate) {
@@ -96,7 +83,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public String getName() {
-		return this.name;
+		return name;
 	}
 
 	public void setName(String name) {
@@ -104,7 +91,7 @@ public class Enterprise implements Serializable {
 	}
 
 	public String getPhone() {
-		return this.phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
@@ -112,33 +99,12 @@ public class Enterprise implements Serializable {
 	}
 
 	public Boolean getStatus() {
-		return this.status;
+		return status;
 	}
 
 	public void setStatus(Boolean status) {
 		this.status = status;
 	}
-
-	public List<Department> getDepartments() {
-		return this.departments;
-	}
-
-	public void setDepartments(List<Department> departments) {
-		this.departments = departments;
-	}
-
-	public Department addDepartment(Department department) {
-		getDepartments().add(department);
-		department.setEnterpris(this);
-
-		return department;
-	}
-
-	public Department removeDepartment(Department department) {
-		getDepartments().remove(department);
-		department.setEnterpris(null);
-
-		return department;
-	}
-
+	
+	
 }

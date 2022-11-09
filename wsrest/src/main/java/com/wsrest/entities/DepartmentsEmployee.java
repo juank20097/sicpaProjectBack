@@ -46,16 +46,8 @@ public class DepartmentsEmployee implements Serializable {
 	public DepartmentsEmployee() {
 	}
 
-	public Integer getId() {
-		return this.id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
 	public String getCreatedBy() {
-		return this.createdBy;
+		return createdBy;
 	}
 
 	public void setCreatedBy(String createdBy) {
@@ -63,7 +55,7 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public Timestamp getCreatedDate() {
-		return this.createdDate;
+		return createdDate;
 	}
 
 	public void setCreatedDate(Timestamp createdDate) {
@@ -71,7 +63,7 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public String getModifiedBy() {
-		return this.modifiedBy;
+		return modifiedBy;
 	}
 
 	public void setModifiedBy(String modifiedBy) {
@@ -79,7 +71,7 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public Timestamp getModifiedDate() {
-		return this.modifiedDate;
+		return modifiedDate;
 	}
 
 	public void setModifiedDate(Timestamp modifiedDate) {
@@ -87,7 +79,7 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public Boolean getStatus() {
-		return this.status;
+		return status;
 	}
 
 	public void setStatus(Boolean status) {
@@ -95,7 +87,7 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public Department getDepartment() {
-		return this.department;
+		return department;
 	}
 
 	public void setDepartment(Department department) {
@@ -103,11 +95,12 @@ public class DepartmentsEmployee implements Serializable {
 	}
 
 	public Employee getEmployee() {
-		return this.employee;
+		return employee;
 	}
 
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
+
 
 }
