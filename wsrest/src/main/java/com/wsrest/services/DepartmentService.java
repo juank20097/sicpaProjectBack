@@ -1,6 +1,7 @@
 package com.wsrest.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,10 @@ public class DepartmentService {
 	
 	public List<Department> getAll() {
 		return departmentrepo.findAll();
+	}
+	
+	public Optional<Department> getId(int id) {
+		return departmentrepo.findById(id);
 	}
 	
 }

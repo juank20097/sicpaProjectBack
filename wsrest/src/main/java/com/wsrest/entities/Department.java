@@ -46,6 +46,20 @@ public class Department implements Serializable {
 
 	public Department() {
 	}
+	
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
 
 	public String getCreatedBy() {
 		return createdBy;
