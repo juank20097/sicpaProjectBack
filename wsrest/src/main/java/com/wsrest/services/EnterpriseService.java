@@ -24,7 +24,7 @@ public class EnterpriseService {
 	}
 	
 	public List<Enterprise> getAll() {
-		return enterpriserepo.findAll();
+		return enterpriserepo.findByStatus();
 	}
 	
 	public Optional<Enterprise> getId(int id) {

@@ -20,7 +20,7 @@ public class EmployeeService {
 	}
 	
 	public List<Employee> getAll() {
-		return employeerepo.findAll();
+		return employeerepo.findByStatus();
 	}
 	
 	public Optional<Employee> getId(int id) {
