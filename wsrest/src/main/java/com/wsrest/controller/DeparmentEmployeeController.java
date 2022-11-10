@@ -47,6 +47,18 @@ public class DeparmentEmployeeController {
 	public Optional<DepartmentsEmployee> getId(@PathVariable("id") int id){
 		return departmentemployeeservice.getId(id);
 	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path = {"/department/{id}"})
+	public List<DepartmentsEmployee> getDepartments(@PathVariable("id") int id){
+		return departmentemployeeservice.getByDepartment(id);
+	}
+	
+	@CrossOrigin(origins = "http://localhost:4200")
+	@GetMapping(path = {"/employee/{id}"})
+	public List<DepartmentsEmployee> getEmployees(@PathVariable("id") int id){
+		return departmentemployeeservice.getByEmployees(id);
+	}
 
 
 }

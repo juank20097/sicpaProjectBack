@@ -14,4 +14,10 @@ public interface DepartmentsEmployeeRepo extends JpaRepository<DepartmentsEmploy
 	@Query("select a from DepartmentsEmployee a where a.status = true")
 	 List<DepartmentsEmployee> findByStatus();
 	
+	@Query("select a from DepartmentsEmployee a where a.department.id = ?1")
+	 List<DepartmentsEmployee> findByDepartments(int id);
+	
+	@Query("select a from DepartmentsEmployee a where a.employee.id = ?1")
+	 List<DepartmentsEmployee> findByEmployees(int id);
+	
 }

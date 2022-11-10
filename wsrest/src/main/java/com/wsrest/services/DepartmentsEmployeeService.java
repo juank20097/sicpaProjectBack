@@ -27,4 +27,14 @@ public class DepartmentsEmployeeService {
 		return departmentsemployeerepo.findById(id);
 	}
 	
+	public List<DepartmentsEmployee> getByDepartment(int id) {
+		return departmentsemployeerepo.findByDepartments(id);
+	}
+	
+	public List<DepartmentsEmployee> getByEmployees(int id) {
+		return departmentsemployeerepo.findByEmployees(id);
+	}
+	
+	
+	
 }
