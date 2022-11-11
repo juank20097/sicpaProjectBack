@@ -1,0 +1,52 @@
+version: '3.1'
+
+services:
+
+  postgres:
+    container_name: postgres
+    image: crunchydata/crunchy-postgres:centos7-10.9-2.4.1
+    restart: always
+    networks:
+      - pgnetwork
+    volumes:
+      - pgvolume:/pgdata
+    ports:
+      - 5432:5432
+    environment:
+      PG_MODE: primary
+      PG_PRIMARY_USER: postgres
+      PG_PRIMARY_PASSWORD: root
+      PG_DATABASE: testdb
+      PG_USER: postgres
+      PG_PASSWORD: root
+      PG_ROOT_PASSWORD: root
+      PG_PRIMARY_PORT: 5432
+
+  pgadmin4:
+    container_name: pgadmin4
+    image: crunchydata/crunchy-pgadmin4:centos7-10.9-2.4.1
+    restart: always
+    networks:
+      - pgnetwork
+    depends_on:
+      - postgres
+    volumes:
+      - pga4volume:/var/lib/pgadmin
+    ports:
+      - 5050:5050
+    environment:
+      PGADMIN_SETUP_EMAIL: juank20097@gmail.com
+      PGADMIN_SETUP_PASSWORD: root
+      SERVER_PORT: 5050
+  
+volumes:
+  pgvolume:
+    driver: local
+  pga4volume:
+    driver: local
+
+networks:
+  pgnetwork:
+    driver: bridge
+
+  
