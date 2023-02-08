@@ -16,9 +16,8 @@ public class Enterprise implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_Sequence")
-	@SequenceGenerator(name = "id_Sequence", sequenceName = "ID_SEQ")
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator = "id_sequence_ent")
+	@SequenceGenerator(name = "id_sequence_ent", sequenceName = "ID_SEQ_ENT")
 	private Integer id;
 
 	private String address;

@@ -1,0 +1,18 @@
+version: '3.8'
+services:
+  oracle:
+    container_name: oracle
+    image: wnameless/oracle-xe-11g-r2
+    restart: always
+    environment:
+      - ORACLE_SID=xe
+      - ORACLE_PDB=system
+      - ORACLE_PWD=oracle
+    ports:
+      - 1521:1521
+    volumes:
+      - data:/u01/app/oracle/oradata
+
+volumes:
+  data:
+    driver: local
