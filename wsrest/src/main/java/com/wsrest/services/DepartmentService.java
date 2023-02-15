@@ -20,10 +20,10 @@ public class DepartmentService {
 	}
 	
 	public List<Department> getAll() {
-		return departmentrepo.findByStatus();
+		return departmentrepo.findByStatus(true);
 	}
 	
-	public Optional<Department> getId(int id) {
+	public Optional<Department> getId(String id) {
 		return departmentrepo.findById(id);
 	}
 	

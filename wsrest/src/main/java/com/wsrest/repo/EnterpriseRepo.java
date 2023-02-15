@@ -2,16 +2,13 @@ package com.wsrest.repo;
 
 import java.util.List;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
 
 import com.wsrest.entities.Enterprise;
 
 @Repository
-public interface EnterpriseRepo extends JpaRepository<Enterprise, Integer> {
+public interface EnterpriseRepo extends MongoRepository<Enterprise, String> {
 	
-	 @Query("select a from Enterprise a where a.status = true")
-	 List<Enterprise> findByStatus();
-	
+	 List<Enterprise> findByStatus(boolean status);
 }

@@ -1,7 +1,6 @@
 package com.wsrest.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,29 +22,29 @@ public class DeparmentController {
 	@Autowired
 	private DepartmentService departmentservice;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public List<Department> getAll(){
 		return departmentservice.getAll();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public Department insert(@RequestBody Department enter) {
 		return departmentservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PutMapping(path = {"/{id}"})
-	public Department update(@RequestBody Department enter,@PathVariable("id") int id) {
+	public Department update(@RequestBody Department enter,@PathVariable("id") String id) {
 		enter.setId(id);
 		return departmentservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = {"/{id}"})
-	public Optional<Department> getId(@PathVariable("id") int id){
-		return departmentservice.getId(id);
+	public Department getId(@PathVariable("id") String id){
+		return departmentservice.getId(id).get();
 	}
 
 }

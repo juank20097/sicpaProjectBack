@@ -1,56 +1,46 @@
 package com.wsrest.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 
 /**
  * The persistent class for the departments_employees database table.
  * 
  */
-@Entity
-@Table(name="departments_employees")
-@NamedQuery(name="DepartmentsEmployee.findAll", query="SELECT d FROM DepartmentsEmployee d")
+@Document(value="departments_employees")
 public class DepartmentsEmployee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private String id;
 
-	@Column(name="created_by")
 	private String createdBy;
 
-	@Column(name="created_date")
-	private Timestamp createdDate;
+	private Date createdDate;
 
-	@Column(name="modified_by")
 	private String modifiedBy;
 
-	@Column(name="modified_date")
-	private Timestamp modifiedDate;
+	private Date modifiedDate;
 
 	private Boolean status;
 
-	//bi-directional many-to-one association to Department
-	@ManyToOne
-	@JoinColumn(name="id_departments")
 	private Department department;
 
-	//bi-directional many-to-one association to Employee
-	@ManyToOne
-	@JoinColumn(name="id_employees")
 	private Employee employee;
 
 	public DepartmentsEmployee() {
 	}
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -62,11 +52,11 @@ public class DepartmentsEmployee implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -78,11 +68,11 @@ public class DepartmentsEmployee implements Serializable {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Timestamp modifiedDate) {
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

@@ -1,37 +1,33 @@
 package com.wsrest.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 
 /**
  * The persistent class for the enterprises database table.
  * 
  */
-@Entity
-@Table(name="enterprises")
-@NamedQuery(name="Enterpris.findAll", query="SELECT e FROM Enterprise e")
+@Document(value = "enterprise")
 public class Enterprise implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private String id;
 
 	private String address;
 
-	@Column(name="created_by")
 	private String createdBy;
+	
+	private Date createdDate;
 
-	@Column(name="created_date")
-	private Timestamp createdDate;
-
-	@Column(name="modified_by")
 	private String modifiedBy;
 
-	@Column(name="modified_date")
-	private Timestamp modifiedDate;
+	private Date modifiedDate;
 
 	private String name;
 
@@ -42,19 +38,13 @@ public class Enterprise implements Serializable {
 	public Enterprise() {
 	}
 	
-	
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-
-
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
-
 
 	public String getAddress() {
 		return address;
@@ -72,11 +62,11 @@ public class Enterprise implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -88,11 +78,11 @@ public class Enterprise implements Serializable {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
-
-	public void setModifiedDate(Timestamp modifiedDate) {
+	
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

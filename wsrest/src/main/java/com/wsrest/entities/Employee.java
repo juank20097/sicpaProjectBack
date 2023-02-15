@@ -1,39 +1,35 @@
 package com.wsrest.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 
 /**
  * The persistent class for the employees database table.
  * 
  */
-@Entity
-@Table(name="employees")
-@NamedQuery(name="Employee.findAll", query="SELECT e FROM Employee e")
+@Document(value = "employees")
 public class Employee implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private String id;
 
 	private Integer age;
 
-	@Column(name="created_by")
 	private String createdBy;
 
-	@Column(name="created_date")
-	private Timestamp createdDate;
+	private Date createdDate;
 
 	private String email;
 
-	@Column(name="modified_by")
 	private String modifiedBy;
 
-	@Column(name="modified_date")
-	private Timestamp modifiedDate;
+	private Date modifiedDate;
 
 	private String name;
 
@@ -47,12 +43,12 @@ public class Employee implements Serializable {
 	}
 	
 
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
 
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
@@ -73,11 +69,11 @@ public class Employee implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Timestamp createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -97,11 +93,11 @@ public class Employee implements Serializable {
 		this.modifiedBy = modifiedBy;
 	}
 
-	public Timestamp getModifiedDate() {
+	public Date getModifiedDate() {
 		return modifiedDate;
 	}
 
-	public void setModifiedDate(Timestamp modifiedDate) {
+	public void setModifiedDate(Date modifiedDate) {
 		this.modifiedDate = modifiedDate;
 	}
 

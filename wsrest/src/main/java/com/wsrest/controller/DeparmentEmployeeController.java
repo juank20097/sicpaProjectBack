@@ -1,7 +1,6 @@
 package com.wsrest.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,40 +22,40 @@ public class DeparmentEmployeeController {
 	@Autowired
 	private DepartmentsEmployeeService departmentemployeeservice;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public List<DepartmentsEmployee> getAll(){
 		return departmentemployeeservice.getAll();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public DepartmentsEmployee insert(@RequestBody DepartmentsEmployee enter) {
 		return departmentemployeeservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PutMapping(path = {"/{id}"})
-	public DepartmentsEmployee update(@RequestBody DepartmentsEmployee enter,@PathVariable("id") int id) {
+	public DepartmentsEmployee update(@RequestBody DepartmentsEmployee enter,@PathVariable("id") String id) {
 		enter.setId(id);
 		return departmentemployeeservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = {"/{id}"})
-	public Optional<DepartmentsEmployee> getId(@PathVariable("id") int id){
-		return departmentemployeeservice.getId(id);
+	public DepartmentsEmployee getId(@PathVariable("id") String id){
+		return departmentemployeeservice.getId(id).get();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = {"/department/{id}"})
-	public List<DepartmentsEmployee> getDepartments(@PathVariable("id") int id){
+	public List<DepartmentsEmployee> getDepartments(@PathVariable("id") String id){
 		return departmentemployeeservice.getByDepartment(id);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = {"/employee/{id}"})
-	public List<DepartmentsEmployee> getEmployees(@PathVariable("id") int id){
+	public List<DepartmentsEmployee> getEmployees(@PathVariable("id") String id){
 		return departmentemployeeservice.getByEmployees(id);
 	}
 

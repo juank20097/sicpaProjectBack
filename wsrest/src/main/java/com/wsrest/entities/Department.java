@@ -1,37 +1,33 @@
 package com.wsrest.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
-import java.sql.Timestamp;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.util.Date;
 
 
 /**
  * The persistent class for the departments database table.
  * 
  */
-@Entity
-@Table(name="departments")
-@NamedQuery(name="Department.findAll", query="SELECT d FROM Department d")
+@Document(value = "deparments")
 public class Department implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private Integer id;
+	private String id;
 
-	@Column(name="created_by")
 	private String createdBy;
 
-	@Column(name="created_date")
-	private Timestamp createdDate;
+	private Date createdDate;
 
 	private String description;
 
-	@Column(name="modified_by")
 	private String modifiedBy;
 
-	@Column(name="modified_date")
-	private Timestamp modifiedDate;
+	private Date modifiedDate;
 
 	private String name;
 
@@ -39,27 +35,34 @@ public class Department implements Serializable {
 
 	private Boolean status;
 
-	//bi-directional many-to-one association to Enterprise
-	@ManyToOne
-	@JoinColumn(name="id_enterprises")
 	private Enterprise enterprise;
 
 	public Department() {
 	}
 	
-	
-
-	public Integer getId() {
+	public String getId() {
 		return id;
 	}
 
-
-
-	public void setId(Integer id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
+	public Date getCreatedDate() {
+		return createdDate;
+	}
 
+	public void setCreatedDate(Date createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public Date getModifiedDate() {
+		return modifiedDate;
+	}
+
+	public void setModifiedDate(Date modifiedDate) {
+		this.modifiedDate = modifiedDate;
+	}
 
 	public String getCreatedBy() {
 		return createdBy;
@@ -69,13 +72,6 @@ public class Department implements Serializable {
 		this.createdBy = createdBy;
 	}
 
-	public Timestamp getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(Timestamp createdDate) {
-		this.createdDate = createdDate;
-	}
 
 	public String getDescription() {
 		return description;
@@ -91,14 +87,6 @@ public class Department implements Serializable {
 
 	public void setModifiedBy(String modifiedBy) {
 		this.modifiedBy = modifiedBy;
-	}
-
-	public Timestamp getModifiedDate() {
-		return modifiedDate;
-	}
-
-	public void setModifiedDate(Timestamp modifiedDate) {
-		this.modifiedDate = modifiedDate;
 	}
 
 	public String getName() {
@@ -132,7 +120,5 @@ public class Department implements Serializable {
 	public void setEnterprise(Enterprise enterprise) {
 		this.enterprise = enterprise;
 	}
-
-	
 
 }

@@ -24,10 +24,10 @@ public class EnterpriseService {
 	}
 	
 	public List<Enterprise> getAll() {
-		return enterpriserepo.findByStatus();
+		return enterpriserepo.findByStatus(true);
 	}
 	
-	public Optional<Enterprise> getId(int id) {
+	public Optional<Enterprise> getId(String id) {
 		return enterpriserepo.findById(id);
 	}
 	

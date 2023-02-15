@@ -1,7 +1,6 @@
 package com.wsrest.controller;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,29 +22,29 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeservice;
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping
 	public List<Employee> getAll(){
 		return employeeservice.getAll();
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PostMapping
 	public Employee insert(@RequestBody Employee enter) {
 		return employeeservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@PutMapping(path = {"/{id}"})
-	public Employee update(@RequestBody Employee enter,@PathVariable("id") int id) {
+	public Employee update(@RequestBody Employee enter,@PathVariable("id") String id) {
 		enter.setId(id);
 		return employeeservice.insertUpdate(enter);
 	}
 	
-	@CrossOrigin(origins = "http://localhost:4200")
+	@CrossOrigin(origins = "*")
 	@GetMapping(path = {"/{id}"})
-	public Optional<Employee> getId(@PathVariable("id") int id){
-		return employeeservice.getId(id);
+	public Employee getId(@PathVariable("id") String id){
+		return employeeservice.getId(id).get();
 	}
 
 }

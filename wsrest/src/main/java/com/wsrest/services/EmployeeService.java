@@ -20,10 +20,10 @@ public class EmployeeService {
 	}
 	
 	public List<Employee> getAll() {
-		return employeerepo.findByStatus();
+		return employeerepo.findByStatus(true);
 	}
 	
-	public Optional<Employee> getId(int id) {
+	public Optional<Employee> getId(String id) {
 		return employeerepo.findById(id);
 	}
 	

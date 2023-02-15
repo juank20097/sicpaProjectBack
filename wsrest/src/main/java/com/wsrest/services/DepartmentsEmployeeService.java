@@ -20,19 +20,19 @@ public class DepartmentsEmployeeService {
 	}
 	
 	public List<DepartmentsEmployee> getAll() {
-		return departmentsemployeerepo.findByStatus();
+		return departmentsemployeerepo.findByStatus(true);
 	}
 	
-	public Optional<DepartmentsEmployee> getId(int id) {
+	public Optional<DepartmentsEmployee> getId(String id) {
 		return departmentsemployeerepo.findById(id);
 	}
 	
-	public List<DepartmentsEmployee> getByDepartment(int id) {
-		return departmentsemployeerepo.findByDepartments(id);
+	public List<DepartmentsEmployee> getByDepartment(String id) {
+		return departmentsemployeerepo.findByDepartmentId(id);
 	}
 	
-	public List<DepartmentsEmployee> getByEmployees(int id) {
-		return departmentsemployeerepo.findByEmployees(id);
+	public List<DepartmentsEmployee> getByEmployees(String id) {
+		return departmentsemployeerepo.findByEmployeeId(id);
 	}
 	
 	
